@@ -82,15 +82,15 @@
     border-width: 2px;
     cursor: pointer;
     border-radius: 24px;
-  }
-  
-  .dropdown {
+}
+
+.dropdown {
     width: 20%;
     position: relative;
     display: inline-block;
-  }
+}
   
-  .dropdown_content {
+.dropdown_content {
     width: 60%;
     height: 9em;
     display: none;
@@ -101,23 +101,23 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     z-index: -1;
-  }
+}
   
-  .dropdown_content a {
+.dropdown_content a {
     color: black;
     padding: 20px 16px;
     text-decoration: none;
     display: block;
-  }
+}
   
-  .dropdown_content a:hover {background-color: #d1d1d1;}
+.dropdown_content a:hover {background-color: #d1d1d1;}
   
-  .dropdown:hover .dropdown_content {
+.dropdown:hover .dropdown_content {
     display: block;
-  }
+}
   
-  .dropdown:hover .dropbtn {
+.dropdown:hover .dropbtn {
     background-color: rgb(255, 230, 0);
-  }
+}
 
-  /* button after sign in or sign up */
+/* button after sign in or sign up */

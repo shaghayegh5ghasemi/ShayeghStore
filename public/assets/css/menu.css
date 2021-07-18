@@ -1,0 +1,38 @@
+.menu {
+    height: 65px;
+    background-color: white;
+}
+
+.pages {
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+.singin_signup {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.store_name {
+    margin-left: 25px;
+    margin-right: 25px;
+    float: right;
+    font-size: 1.2em;
+    color: rgb(0, 255, 255);
+    text-align: center;
+}
+
+.menu_elements {
+    margin-left: 25px;
+    margin-right: 25px;
+    float: right;
+    text-align: center;
+}
+
+.menu_elements:hover {
+    color: rgb(0, 255, 255);
+}
+
+

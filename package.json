@@ -9,6 +9,11 @@
   "author": "Hassan Kazemi Tehrani - Shaghayegh Ghasemi",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "mongodb": "^4.0.0",
+    "mv": "^2.1.1"
   }
 }

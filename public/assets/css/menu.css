@@ -16,6 +16,9 @@
 }
 
 .store_name {
+    display: table;
+    height: 100%;
+    line-height: 100%;
     margin-left: 25px;
     margin-right: 25px;
     float: right;
@@ -25,12 +28,19 @@
 }
 
 .menu_elements {
+    display: table;
+    height: 100%;
     margin-left: 25px;
     margin-right: 25px;
     float: right;
     text-align: center;
+    margin-top: 0px;
 }
 
+.pages span {
+    display: table-cell;
+    vertical-align: middle; 
+}
 .menu_elements:hover {
     color: rgb(0, 255, 255);
 }

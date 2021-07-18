@@ -1,18 +1,14 @@
+/* menu bar is divided into two parts: menu elements and the button for sign in or sign up  */
 .menu {
     height: 65px;
     background-color: white;
 }
 
+/* menu elements  */
 .pages {
-    width: 50%;
+    width: 80%;
     height: 100%;
     float: right;
-}
-
-.singin_signup {
-    width: 50%;
-    height: 100%;
-    float: left;
 }
 
 .store_name {
@@ -23,7 +19,7 @@
     margin-right: 25px;
     float: right;
     font-size: 1.2em;
-    color: rgb(0, 255, 255);
+    color: rgb(0, 149, 255);
     text-align: center;
 }
 
@@ -42,7 +38,33 @@
     vertical-align: middle; 
 }
 .menu_elements:hover {
-    color: rgb(0, 255, 255);
+    color: rgb(0, 149, 255);
+}
+/* menu elements  */
+
+/* button for sign in and sign up */
+.menu_button {
+    width: 20%;
+    height: 100%;
+    float: left;
+    display: grid;
 }
 
+.singin_signup {
+    border-radius: 24px;
+    border-color: rgb(255, 230, 0);
+    border-width: 2px;
+    background-color: white;
+    margin-left: 25px;
+    font-size: 1em;
+    margin: auto; 
+}
 
+.singin_signup p {
+    margin: 10px 25px 10px 25px;
+}
+
+.singin_signup:hover {
+    background-color: rgb(255, 230, 0);
+}
+/* button for sign in and sign up */

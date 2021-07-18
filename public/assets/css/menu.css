@@ -33,7 +33,13 @@
     margin-top: 0px;
 }
 
-.pages span {
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.pages a {
     display: table-cell;
     vertical-align: middle; 
 }

@@ -24,6 +24,7 @@
     color:white;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+    min-width: 50px;
 }
 
 .input-space{
@@ -37,6 +38,25 @@
 }
 
 .input{
-    margin:4px ; 
+    margin:10px ;
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
 
+.inputs-login{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.inputs-signup{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.submitbutton{
+    border-radius: 24px;
+    padding-inline: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(255, 230, 0);
 }

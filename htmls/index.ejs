@@ -7,23 +7,29 @@
     <script src="/assets/js/config.js"></script>
     <title>ShayeghStore</title>
     <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/menu.css" rel='stylesheet' type='text/css'>
+    <link href="assets/css/footer.css" rel='stylesheet' type='text/css'>
     <link href='http://www.fontonline.ir/css/BYekan.css' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
     <div class="container">
         <!-- header -->
-        <header style="text-align: center;">header</header>
+        <header style="text-align: center;">
+            <%- include("menu.ejs"); -%>
+        </header>
         <!-- header -->
 
         <!-- main -->
         <main class="main" style="text-align: center;">
-            <p>hi</p>
+            
         </main>
         <!-- main -->
 
         <!-- footer -->
-        <footer class="footer" style="text-align: center;">footer</footer>
+        <footer class="footer" style="text-align: center;">
+            <%- include("footer.ejs"); -%>
+        </footer>
         <!-- footer -->
     </div>
 </body>

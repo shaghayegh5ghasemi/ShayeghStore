@@ -10,7 +10,9 @@ var dburl = "mongodb://localhost:27017/";
 
 
 
-router.get('/',function(req,res){
+router.get('/test',function(req,res){
+    res.render('index.ejs')
+    res.end()
 })
 
 

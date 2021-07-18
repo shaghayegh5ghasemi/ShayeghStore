@@ -1,0 +1,70 @@
+/* menu bar is divided into two parts: menu elements and the button for sign in or sign up  */
+.menu {
+    height: 65px;
+    background-color: white;
+}
+
+/* menu elements  */
+.pages {
+    width: 80%;
+    height: 100%;
+    float: right;
+}
+
+.store_name {
+    display: table;
+    height: 100%;
+    line-height: 100%;
+    margin-left: 25px;
+    margin-right: 25px;
+    float: right;
+    font-size: 1.2em;
+    color: rgb(0, 149, 255);
+    text-align: center;
+}
+
+.menu_elements {
+    display: table;
+    height: 100%;
+    margin-left: 25px;
+    margin-right: 25px;
+    float: right;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.pages span {
+    display: table-cell;
+    vertical-align: middle; 
+}
+.menu_elements:hover {
+    color: rgb(0, 149, 255);
+}
+/* menu elements  */
+
+/* button for sign in and sign up */
+.menu_button {
+    width: 20%;
+    height: 100%;
+    float: left;
+    display: grid;
+}
+
+.singin_signup {
+    border-radius: 24px;
+    border-color: rgb(255, 230, 0);
+    border-width: 2px;
+    background-color: white;
+    margin-left: 25px;
+    font-size: 1em;
+    margin: auto; 
+}
+
+.singin_signup p {
+    margin: 10px 25px 10px 25px;
+}
+
+.singin_signup:hover {
+    background-color: rgb(255, 230, 0);
+}
+/* button for sign in and sign up */

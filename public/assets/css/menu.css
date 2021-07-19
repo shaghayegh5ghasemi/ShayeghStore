@@ -62,7 +62,6 @@ a, a:hover, a:focus, a:active {
     border-color: rgb(255, 230, 0);
     border-width: 2px;
     background-color: white;
-    margin-left: 25px;
     font-size: 1em;
     margin: auto; 
 }
@@ -81,13 +80,14 @@ a, a:hover, a:focus, a:active {
     width: 60%;
     background-color: white;
     color: black;
-    padding: 16px;
+    padding: 10px;
     font-size: 16px;
     border-style: solid;
     border-color: rgb(255, 230, 0);
     border-width: 2px;
     cursor: pointer;
     border-radius: 24px;
+    margin-top: 10px;
 }
 
 .dropdown {

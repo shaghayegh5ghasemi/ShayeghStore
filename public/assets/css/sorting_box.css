@@ -1,0 +1,8 @@
+.sorting_box {
+    width: 98%;
+    height: 50px;
+    background-color: white;
+    margin: 10px auto;
+    display: block;
+    box-shadow: 0px 15px 20px rgba(255, 255, 255, 0.4);
+}

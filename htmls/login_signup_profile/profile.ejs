@@ -1,0 +1,31 @@
+<div id="content">
+    <p class="title child">
+        فروشگاه - ورود
+    </p>
+    <div>
+        <button class="tablink w3-red" onclick="openCity(event,'profile')">پروفایل</button>
+        <button class="tablink" onclick="openCity(event,'receipts')">رسید ها</button>
+    </div>
+    <div class="inputs-login child">
+        <%- include('input.ejs',{data:{name:'ایمیل',placeholder:'ایمیل خود را وارد کنید'}}) -%>
+        <%- include('input.ejs',{data:{name:'رمز عبور',placeholder:'رمز عبور خود را وارد کنید'}}) -%>
+    </div>
+    <a href="test" class="submitbutton child">ورود</a>
+</div>
+
+<script>
+    function openCity(evt, cityName) {
+      var i, x, tablinks;
+      x = document.getElementsByClassName("city");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " w3-red";
+    }
+</script>
+    

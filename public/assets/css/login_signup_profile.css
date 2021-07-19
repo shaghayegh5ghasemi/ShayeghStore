@@ -62,3 +62,86 @@
     padding-bottom: 5px;
     background-color: rgb(255, 230, 0);
 }
+
+.tabbar{
+    background-color: #cecdcd;
+    border-radius: 24px;
+    padding-inline: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.tablink{
+    border: none;
+    cursor: pointer;
+    padding-inline: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #cecdcd;
+    font-size: 13px;
+}
+
+.tablinkleft{
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+.tablinkright{
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+
+.selected{
+    background-color:rgba(255, 255, 255, 0.904);
+    color: #cecdcd;
+}
+
+.profile-title{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+}
+
+.profile-title > * {
+    margin: auto;
+}
+
+.margin-right{
+    margin-right: 10px;
+}
+
+.margin-left{
+    margin-left: 10px;
+}
+
+.tinybtn{
+    border-radius: 24px;
+    padding-inline: 13px;
+    padding-top: 5px;
+    font-size: 10px;
+    padding-bottom: 5px;
+    background-color: rgb(255, 230, 0);
+}
+
+.inputs-profile{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 2fr;
+}
+
+.grid-1-3{
+    grid-column: 1/3;
+}
+
+input.grid-1-3{
+    width: 100%;
+}
+
+.editbtn{
+    border-radius: 24px;
+    padding-inline: 16px;
+    padding-top: 5px;
+    font-size: 13px;
+    padding-bottom: 5px;
+    background-color: rgb(255, 230, 0);
+}

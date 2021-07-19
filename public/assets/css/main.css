@@ -8,6 +8,10 @@
     font-family: BYekan,'BYekan',tahoma;
 }
 
+.container * {
+    font-family: BYekan,'BYekan',tahoma;
+}
+
 main {
     flex: 0.95;
     background-color: #d9d9d9;

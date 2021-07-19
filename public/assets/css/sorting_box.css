@@ -5,4 +5,47 @@
     margin: 10px auto;
     display: block;
     box-shadow: 0px 15px 20px rgba(255, 255, 255, 0.4);
+    line-height: 50px;
+}
+
+.ordered_by {
+    text-align: right;
+    margin-right: 25px;
+    margin-left: 10px;
+    width: 12%;
+    float: right;
+}
+
+.best_btn {
+    height: 30px;
+    width: 10%;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(0, 149, 255);
+    box-shadow: 0px 10px 20px rgba(0, 149, 255, 0.4);
+    border-radius: 24px;
+    line-height: 30px;
+}
+
+.best_seller {
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.price_btn {
+    height: 30px;
+    width: 10%;
+    float: right;
+    margin: 10px;
+    /* background-color: rgb(0, 149, 255);
+    box-shadow: 0px 10px 20px rgba(0, 149, 255, 0.4); */
+    border-radius: 24px;
+    line-height: 30px;
+}
+
+.price {
+    text-align: center;
+    cursor: pointer;
 }

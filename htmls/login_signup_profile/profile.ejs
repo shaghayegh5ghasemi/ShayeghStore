@@ -1,0 +1,24 @@
+<div id="content">
+    <div class="profile-title child">
+        <a href="test" class="tinybtn child">افزایش موجودی</a>
+        <div style="padding: 3px;">موجودی حساب شما: 1444000 تومان </div>
+        <div style="font-size: 20px;"> | شقایق عزیز، خوش آمدید </div>
+    </div>
+    <div class="tabbar child">
+        <button class="tablink tablinkleft" onclick="changetab(event,'receipts')">رسید ها</button>
+        <button class="tablink tablinkright selected" onclick="changetab(event,'profile')">پروفایل</button>
+    </div>
+    <div class="inputs-profile">
+        <%- include('input.ejs',{data:{name:'نام خانوادگی',placeholder:'قاسمی'},additional:""}) -%>
+        <%- include('input.ejs',{data:{name:'نام',placeholder:'شقایق'},additional:""}) -%>
+        <%- include('input.ejs',{data:{name:'رمز عبور',placeholder:'رمز عبور خود را وارد کنید'},additional:"grid-1-3"}) -%>
+        <%- include('textarea.ejs',{data:{name:'آدرس',placeholder:'ایران - تهران - قلب حسن'}}) -%>
+    </div>
+    <a href="test" class="editbtn child">ویرایش اطلاعات</a>
+</div>
+
+<script>
+    function changetab(evt, tabname) {
+    }
+</script>
+    

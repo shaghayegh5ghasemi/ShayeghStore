@@ -1,0 +1,37 @@
+.product_box {
+    background-color: white;
+    width: 30%;
+    margin-right: 15px;
+    box-shadow: 10px 10px 10px rgba(223, 223, 223, 0.534);
+    padding-bottom: 25px;
+}
+
+.product_img {
+    max-width: 70%;
+    min-width: 70%;
+    max-height: 30%;
+    min-height: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product_box h3 {
+    text-align: right;
+    margin-right: 25px;
+}
+
+.product_box h4 {
+    text-align: right;
+    color: gray;
+    font-weight: lighter;
+    margin-right: 25px;
+}
+
+.separate_line {
+    height:0.5px;
+    width:80%;
+    border-width:0;
+    background-color:rgba(151, 151, 151, 0.6);
+    margin: 25px auto;
+}

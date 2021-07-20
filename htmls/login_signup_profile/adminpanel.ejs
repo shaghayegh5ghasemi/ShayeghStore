@@ -1,0 +1,17 @@
+<div id="content">
+    <div style="margin-top: 30px;">
+        <div style="font-size: 25px;"> ادمین عزیز، خوش آمدید </div>
+    </div>
+    <div class="tabbar child">
+        <button class="tablink tablinkleft unselected" onclick="changetab(event,'receipts')">رسید ها</button>
+        <button class="tablink unselected" onclick="changetab(event,'profile')">لیست دسته ها</button>
+        <button class="tablink tablinkright " onclick="changetab(event,'profile')">لیست کالا ها</button>
+    </div>
+    <button class="addbtn">ایجاد دسته بندی جدید +</button>
+    <!-- <%- include('input.ejs',{data:{name:'جستجوی کد پیگیری',placeholder:'کد پیگری را برای جستجو وارد کنید'},additional:""}) -%>
+    <%- include('receipts-admin.ejs') -%> -->
+    <!-- <%- include('category_list.ejs') -%> -->
+    <%- include('product_list.ejs') -%>
+    
+    
+</div>

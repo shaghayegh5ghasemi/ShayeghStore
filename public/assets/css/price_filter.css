@@ -1,9 +1,8 @@
 .filter_price {
     background-color: white;
-    width: 25%;
+	width: 100%;
     height: 140px;
     max-height: 200px;
-    margin-right: 15px;
     box-shadow: 10px 10px 10px rgba(155, 155, 155, 0.534);
 
 }

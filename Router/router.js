@@ -107,7 +107,7 @@ router.post("/login",function(req,res){
           else{
             if(md5(req.body.password) == admin.pass){
               res.cookie('admintoken', admin.token);
-              res.redirect('/adminpanel')
+              res.redirect('/profile')
             }
             else{
               renderdata = {
@@ -145,7 +145,7 @@ router.post("/login",function(req,res){
 router.get("/",function(req,res){
   MongoClient.connect(dburl,function(err,db){
     var dbo = db.db("shayegh")
-    if(req.cookies.usertoken == undefined){
+    if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
       renderdata = {
         main_path:'./homepage.ejs',
         main_data:{},
@@ -157,7 +157,20 @@ router.get("/",function(req,res){
       dbo.collection("Users").findOne({token:req.cookies.usertoken},function(err,user){
         if(user==undefined){
           res.clearCookie('usertoken');
-          res.redirect('/')
+          dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+            if(admin == undefined){
+              res.clearCookie("admintoken")
+              res.redirect('/')
+            }
+            else{
+              renderdata = {
+                main_path:'./homepage.ejs',
+                main_data:{},
+                user:{firstname:"admin",lastname:""},
+              }
+              res.render('index.ejs',renderdata)
+            }
+          })
         }
         else{
           renderdata = {
@@ -174,6 +187,7 @@ router.get("/",function(req,res){
 
 router.get("/exit",function(req,res){
   res.clearCookie('usertoken')
+  res.clearCookie('admintoken')
   res.redirect('/')
 })
 

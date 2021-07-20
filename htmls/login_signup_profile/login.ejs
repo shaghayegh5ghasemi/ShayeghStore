@@ -2,9 +2,11 @@
     <p class="title child">
         فروشگاه - ورود
     </p>
+    <form action="/login" method="POST">
     <div class="inputs-login child">
-        <%- include('input.ejs',{data:{name:'ایمیل',placeholder:'ایمیل خود را وارد کنید'},additional:""}) -%>
-        <%- include('input.ejs',{data:{name:'رمز عبور',placeholder:'رمز عبور خود را وارد کنید'},additional:""}) -%>
+        <%- include('input.ejs',{data:{name:'ایمیل',placeholder:'ایمیل خود را وارد کنید'},additional:"",name:"email",type:"email"}) -%>
+        <%- include('input.ejs',{data:{name:'رمز عبور',placeholder:'رمز عبور خود را وارد کنید'},additional:"",name:"password",type:"password"}) -%>
     </div>
-    <a href="test" class="submitbutton child">ورود</a>
+    <button type="submit" class="submitbutton child">ورود</button>
+    </form>
 </div>

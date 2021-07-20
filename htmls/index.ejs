@@ -23,13 +23,13 @@
     <div class="container">
         <!-- header -->
         <header style="text-align: center;">
-            <%- include("menu.ejs"); -%>
+            <%- include("menu.ejs",{user:user}); -%>
         </header>
         <!-- header -->
 
         <!-- main -->
         <main class="main" style="text-align: center;">
-            <%- include(main_path) -%>
+            <%- include(main_path,{data:main_data}) -%>
         </main>
         <!-- main -->
 

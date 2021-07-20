@@ -57,8 +57,27 @@ router.get('/test',function(req,res){
 })
 
 
-router.post('/adminpanel/changeproduct',function(req,res){
 
+
+router.get("/signup",function(req,res){
+  renderdata = {
+    main_path:'./login_signup_profile/signup.ejs',
+    main_data:{flag:0},
+    user:""
+  }
+  res.render('index.ejs',renderdata)
+})
+
+router.post("/signup",function(req,res){
+  MongoClient.connect(dburl,function(err,db){
+    var dbo = db.db("shayegh")
+    newuser = new User(req.body.email,md5(req.body.password),req.body.first_name,req.body.last_name,req.body.address)
+    res.cookie('usertoken',newuser.token)
+    dbo.collection("Users").insertOne(newuser,function(err,qwe){
+      db.close()
+      res.redirect('/')
+    })
+  })
 })
 
 
@@ -121,16 +140,39 @@ router.post("/login",function(req,res){
 
 
 router.get("/",function(req,res){
-  if(req.cookies.usertoken == undefined){
-    renderdata = {
-      main_path:'./homepage.ejs',
-      main_data:{},
-      user:""
+  MongoClient.connect(dburl,function(err,db){
+    var dbo = db.db("shayegh")
+    if(req.cookies.usertoken == undefined){
+      renderdata = {
+        main_path:'./homepage.ejs',
+        main_data:{},
+        user:""
+      }
+      res.render('index.ejs',renderdata)
     }
-    res.render('index.ejs',renderdata)
-  }
+    else{
+      dbo.collection("Users").findOne({token:req.cookies.usertoken},function(err,user){
+        if(user==undefined){
+          res.clearCookie('usertoken');
+          res.redirect('/')
+        }
+        else{
+          renderdata = {
+            main_path:'./homepage.ejs',
+            main_data:{},
+            user:user
+          }
+          res.render('index.ejs',renderdata)
+        }
+      })
+    }
+  })
 })
 
+router.get("/exit",function(req,res){
+  res.clearCookie('usertoken')
+  res.redirect('/')
+})
 
 
 router.get('*', function (req, res) {

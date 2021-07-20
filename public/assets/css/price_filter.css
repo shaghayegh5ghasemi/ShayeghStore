@@ -66,10 +66,6 @@
 /* #########  Styling */
 
 
-a, a:hover{
-	text-decoration: none;
-	color: #000;
-}
 
 :root{
 	--main-lighter: rgb(0, 149, 255);

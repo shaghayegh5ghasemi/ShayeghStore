@@ -1,0 +1,21 @@
+.home_list {
+    width: 98%;
+    height: 50px;
+    margin: 15px auto;
+    display: block;
+}
+
+.filter_boxes {
+    width: 25%;
+    float: right;
+}
+
+.products {
+    width: 74%;
+    float: left;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}

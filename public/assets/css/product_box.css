@@ -1,8 +1,8 @@
 .product_box {
     background-color: white;
-    width: 30%;
-    height: 400px;
-    margin-right: 15px;
+    width: 95%;
+    height: 350px;
+    margin-bottom: 15px;
     box-shadow: 10px 10px 10px rgba(155, 155, 155, 0.534);
 }
 
@@ -29,22 +29,21 @@
 
 .separate_line {
     height:0.5px;
-    width:90%;
+    width:92%;
     border-width:0;
     background-color:rgba(151, 151, 151, 0.6);
-    margin: 55px auto 0px auto;
+    margin: 35px auto 0px auto;
 }
 
 .bottom_part {
     width: 100%;
-    height: 83px;
-    line-height: 83px;
+    height: 55px;
+    line-height: 55px
 }
 
 .product_price {
-    width: 20%;
     float: right;
-    margin-right: 5%;
+    margin-right: 15px;
     font-size: 1.2em;
 }
 
@@ -58,7 +57,7 @@
     text-align: center;
     width: 40%;
     float: left;
-    margin: 25px 15px;
+    margin: 10px 15px;
     font-size: 1em;
     border: none;
     background-color: rgb(0, 149, 255);

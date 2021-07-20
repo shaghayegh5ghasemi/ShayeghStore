@@ -267,6 +267,42 @@ router.get("/exit",function(req,res){
   res.redirect('/')
 })
 
+router.get("/404",function(req,res){
+  if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
+    renderdata = {
+      main_path:'./404.ejs',
+      main_data:{},
+      user:""
+    }
+    res.render('index.ejs',renderdata)
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo = db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken}, function(err,user){
+        if(user==undefined){
+          dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+            renderdata = {
+              main_path:'./404.ejs',
+              main_data:{firstname:"admin",lastname:""},
+              user:user
+            }
+            res.render('index.ejs',renderdata)
+          })
+        }
+        else{
+          renderdata = {
+            main_path:'./404.ejs',
+            main_data:{},
+            user:user
+          }
+          res.render('index.ejs',renderdata)
+        }
+      })
+    })
+  }
+})
+
 
 router.get('*', function (req, res) {
   res.redirect("/404");

@@ -1,6 +1,13 @@
 <div class="product_box">
-    <img class="product_img" src="<%= data.source %>" alt="">
-    <h3><%= data.productname %></h5>
-    <h4><%= data.productcat %></h6>
+    <div class="top_part">
+        <img class="product_img" src="<%= data.source %>" alt="">
+        <h3><%= data.productname %></h5>
+        <h4><%= data.productcat %></h6>
+    </div>
     <hr class="separate_line">
+    <div class="bottom_part">
+        <p class="price"><%= data.productprice %></p>
+        <p class="unit">تومان</p>
+        <Button class="shop_btn">خرید محصول</Button>
+    </div>
 </div>

@@ -2,9 +2,15 @@
     <p class="title child">
         فروشگاه - ورود
     </p>
+    <form action="/login" method="POST">
     <div class="inputs-login child">
-        <%- include('input.ejs',{data:{name:'ایمیل',placeholder:'ایمیل خود را وارد کنید'},additional:""}) -%>
-        <%- include('input.ejs',{data:{name:'رمز عبور',placeholder:'رمز عبور خود را وارد کنید'},additional:""}) -%>
+        <%- include('input.ejs',{data:{name:'ایمیل',placeholder:'ایمیل خود را وارد کنید'},additional:"",name:"email",type:"email"}) -%>
+        <%- include('input.ejs',{data:{name:'رمز عبور',placeholder:'رمز عبور خود را وارد کنید'},additional:"",name:"password",type:"password"}) -%>
+        <p>ثبت نام نکرده اید؟ برای ساخت حساب کاربری جدید  <a href="/signup" style="color: rgb(0 149 255);"> کلیک </a>کنید</p>
+        <% if(data.flag == 1) { %>
+            <p style="color: red;">نام کاربری و یا کلمه عبور اشتباه می باشد</p>
+        <% } %>
     </div>
-    <a href="test" class="submitbutton child">ورود</a>
+    <button type="submit" class="submitbutton child">ورود</button>
+    </form>
 </div>

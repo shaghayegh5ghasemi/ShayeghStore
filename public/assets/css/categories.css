@@ -3,3 +3,13 @@
     width: 25%;
     margin-right: 15px;
 }
+
+.categories p {
+    text-align: right;
+    margin-right: 25px;
+}
+
+.cat_checkbox {
+    text-align: right;
+    margin-right: 25px;
+}

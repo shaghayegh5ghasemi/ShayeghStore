@@ -75,10 +75,11 @@
     border: none;
     cursor: pointer;
     padding-inline: 35px;
-    padding-top: 5px;
+    padding-top: 7px;
     padding-bottom: 5px;
     background-color: #cecdcd;
     font-size: 13px;
+    margin: -4px;
 }
 
 .tablinkleft{
@@ -159,9 +160,43 @@ table {
     border-bottom: 1px solid #ddd;
     max-width: 25%;
   }
+
+  th{
+    color: #cecdcd;
+  }
   
 tr:hover {background-color: #cecdcd;}
 
 .receipts{
+    width: 80%;
+}
+
+#trth:hover{
+    background-color:  rgba(255, 255, 255, 0.904);
+}
+
+.op{
+    margin: 5px;
+}
+
+.op:hover{
+    color: rgb(0, 149, 255);
+}
+
+.addbtn {
+    text-align: center;
+    float: left;
+    padding-inline: 15px;
+    margin: 2% 5%;
+    font-size: 1em;
+    border: none;
+    background-color: rgb(0, 149, 255);
+    color: white;
+    border-radius: 24px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.prod_list{
     width: 80%;
 }

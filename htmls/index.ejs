@@ -12,6 +12,7 @@
     <link href="assets/css/footer.css" rel='stylesheet' type='text/css'>
     <link href="assets/css/hero-header.css" rel='stylesheet' type='text/css'>
     <link href="assets/css/sorting_box.css" rel='stylesheet' type='text/css'>
+    <link href="assets/css/categories.css" rel='stylesheet' type='text/css'>
     <link href='http://www.fontonline.ir/css/BYekan.css' rel='stylesheet' type='text/css'>
 </head>
 
@@ -25,8 +26,9 @@
 
         <!-- main -->
         <main class="main" style="text-align: center;">
-            <%- include('login_signup_profile/profile.ejs') -%>
-
+            <%- include("./home/hero-header.ejs"); -%>
+            <%- include("./home/sorting_box.ejs"); -%>
+            <%- include("./home/categories.ejs"); -%>
         </main>
         <!-- main -->
 

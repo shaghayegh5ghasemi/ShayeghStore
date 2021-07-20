@@ -2,7 +2,7 @@
     width: 98%;
     height: 50px;
     background-color: white;
-    margin: 10px auto;
+    margin: 15px auto;
     display: block;
     box-shadow: 0px 15px 20px rgba(255, 255, 255, 0.4);
     line-height: 50px;
@@ -18,7 +18,7 @@
 
 .best_btn {
     height: 30px;
-    width: 10%;
+    width: 12%;
     float: right;
     margin-top: 10px;
     margin-bottom: 10px;

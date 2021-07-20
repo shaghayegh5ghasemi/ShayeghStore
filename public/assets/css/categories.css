@@ -1,0 +1,37 @@
+.categories {
+    background-color: white;
+    width: 25%;
+    margin-right: 15px;
+    box-shadow: 0px 15px 20px rgba(255, 255, 255, 0.5);
+    padding-bottom: 25px;
+}
+
+.categories p {
+    text-align: right;
+    margin-right: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.cat_checkbox {
+    text-align: right;
+    margin-right: 25px;
+    margin-top: 10px;
+}
+
+.checkbox_round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.checkbox_round:checked {
+    background-color: rgb(0, 149, 255);
+}

@@ -2,25 +2,25 @@
 	padding: 0;
 	margin: 0;
 }
-.single_banner_slide {
-	width: 100%;
-    height: 25em;
+.mySlides {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	/* display: flex; */
+}
+.single_banner_slide {
+	width: 100%;
+    height: 25em;
+	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* flex-direction: column; */
-	/* z-index: 2; */
+	flex-direction: column;
+	z-index: 2;
 }
 
 .single_banner_slide h2 {
 	color: #fff;
 	text-transform: uppercase;
 	font-size: 2em;
-	margin-bottom: 40px;
-    padding-top: 60px;
 }
 
 .search_input {
@@ -29,6 +29,7 @@
 	border-radius: 24px;
 	text-align: center;
 	border: none;
+	margin-top: 40px;
 }
 
 .search_button {
@@ -47,9 +48,6 @@
 	box-shadow: 0px 15px 20px rgba(255, 230, 0, 0.4);
   	transform: translateY(-7px);
 }
-
-/* * {box-sizing: border-box} */
-.mySlides {display: none}
 
 /* Slideshow container */
 .slideshow-container {
@@ -88,15 +86,6 @@
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
-}
-
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
 }
 
 /* Fading animation */

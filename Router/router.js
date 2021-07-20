@@ -21,6 +21,21 @@ router.get('/test',function(req,res){
 })
 
 
+router.post('/adminpanel/changeproduct',function(req,res){
+
+})
+
+
+router.get("/",function(req,res){
+  if(req.cookies.token == undefined){
+    renderdata = {
+      main_path:'./homepage.ejs'
+    }
+    res.render('index.ejs',renderdata)
+  }
+})
+
+
 
 router.get('*', function (req, res) {
   res.redirect("/404");

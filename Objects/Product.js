@@ -1,7 +1,7 @@
 class Product{
-    constructor(name,category,price,count,image){
+    constructor(name,price,count,image){
         this.name = name;
-        this.category = category;
+        this.category = "دسته بندی نشده";
         this.price = price;
         this.count = count;
         this.sold = 0;

@@ -4,11 +4,9 @@ const fs = require('fs');
 const url = require('url');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectID;
-const cookieParser = require('cookie-parser');
 const mv = require('mv');
 const md5 = require('md5')
 const dburl = "mongodb://localhost:27017/";
-
 const Category = require('../Objects/Category.js');
 const Order = require('../Objects/Order.js');
 const Product = require('../Objects/Product.js');
@@ -67,19 +65,63 @@ router.post('/adminpanel/changeproduct',function(req,res){
 router.get("/login",function(req,res){
   renderdata = {
     main_path:'./login_signup_profile/login.ejs',
-    main_data:{},
+    main_data:{flag:0},
     user:""
   }
   res.render('index.ejs',renderdata)
 })
 
 router.post("/login",function(req,res){
-  MongoClient.connect()
+  MongoClient.connect(dburl,function(err,db){
+    var dbo = db.db("shayegh")
+    dbo.collection("Users").findOne({username:req.body.email},function(err,user){
+      if(user == undefined){
+        dbo.collection("Admins").findOne({username:req.body.email},function(err,admin){
+          if(admin == undefined){
+            renderdata = {
+              main_path:'./login_signup_profile/login.ejs',
+              main_data:{flag:1},
+              user:""
+            }
+            res.render('index.ejs',renderdata)
+          }
+          else{
+            if(md5(req.body.password) == admin.pass){
+              res.cookie('admintoken', admin.token);
+              res.redirect('/adminpanel')
+            }
+            else{
+              renderdata = {
+                main_path:'./login_signup_profile/login.ejs',
+                main_data:{flag:1},
+                user:""
+              }
+              res.render('index.ejs',renderdata)
+            }
+          }
+        })
+      }
+      else{
+        if(md5(req.body.password) == user.pass){
+          res.cookie('usertoken', user.token);
+          res.redirect('/')
+        }
+        else{
+          renderdata = {
+            main_path:'./login_signup_profile/login.ejs',
+            main_data:{flag:1},
+            user:""
+          }
+          res.render('index.ejs',renderdata)
+        }
+      }
+    })
+  })
 })
 
 
 router.get("/",function(req,res){
-  if(req.cookies.token == undefined){
+  if(req.cookies.usertoken == undefined){
     renderdata = {
       main_path:'./homepage.ejs',
       main_data:{},

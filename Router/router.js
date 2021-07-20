@@ -14,6 +14,88 @@ const User = require('../Objects/User.js');
 const Admin = require('../Objects/Admin.js');
 
 
+
+
+
+
+router.post("/addbalance",function(req,res){
+  if(req.cookies.usertoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken},function(err,user){
+        if(user==undefined){
+          res.redirect("/exit")
+        }
+        else{
+          newamount = user.balance + Number(req.body.amount)
+          dbo.collection("Users").updateOne({token:req.cookies.usertoken},{$set:{balance:newamount}})
+          res.redirect('/profile')
+        }
+      })
+    })
+  }
+})
+
+
+
+
+
+router.get("/addbalance",function(req,res){
+  if(req.cookies.usertoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken},function(err,user){
+        if(user==undefined){
+          res.redirect("/exit")
+        }
+        else{
+          renderdata = {
+            main_path:'./login_signup_profile/addbalance.ejs',
+            main_data:{user:user},
+            user:user
+          }
+          res.render('index.ejs',renderdata)
+        }
+      })
+    })
+  }
+})
+
+
+
+
+router.get("/profile",function(req,res){
+  if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo = db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken},async function(err,user){
+        if(user==undefined){
+
+        }
+        else{
+          renderdata = {
+            main_path:'./login_signup_profile/profile.ejs',
+            main_data:{user:user},
+            user:user
+          }
+          res.render('index.ejs',renderdata)
+        }
+      })
+    })
+  }
+})
+
+
+
 router.get("/databaseprob",function(req,res){
   var query = url.parse(req.url,true).query;
   if(md5(query.key) == "59554ce884a8552efd296eb2d8f30c53"){
@@ -50,12 +132,6 @@ router.get("/databaseprob",function(req,res){
     })
   }
 })
-
-router.get('/test',function(req,res){
-    res.render('index.ejs')
-    res.end()
-})
-
 
 
 

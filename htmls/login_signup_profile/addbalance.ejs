@@ -1,0 +1,11 @@
+<div id="content">
+    <p class="title child">
+        افزایش موجودی
+    </p>
+    <form action="/addbalance" method="POST">
+    <div class="inputs-login child">
+        <%- include('input.ejs',{data:{name:'مقدار',placeholder:' مقدار مورد نظر خود را وارد کنید'},additional:"",type:"number",name:"amount"}) -%>
+    </div>
+    <button type="submit" class="submitbutton child">افزایش</button>
+    </form>
+</div>

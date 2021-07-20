@@ -1,30 +1,32 @@
 /* width */
-.categories::-webkit-scrollbar {
+.scrollbar::-webkit-scrollbar {
     width: 10px;
   }
   
   /* Track */
-  .categories::-webkit-scrollbar-track {
+  .scrollbar::-webkit-scrollbar-track {
     box-shadow: inset 0 0 2px rgb(194, 194, 194); 
     border-radius: 5px;
   }
    
   /* Handle */
-  .categories::-webkit-scrollbar-thumb {
+  .scrollbar::-webkit-scrollbar-thumb {
     background: rgb(0, 149, 255); 
     border-radius: 10px;
   }
   
   /* Handle on hover */
-  .categories::-webkit-scrollbar-thumb:hover {
+  .scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgb(0, 149, 255); 
   }
 
+  .scrollbar {
+    overflow-y: scroll;
+    max-height: 200px;
+  }
 .categories {
     background-color: white;
     width: 100%;
-    max-height: 200px;
-    overflow-y: scroll;
     box-shadow: 10px 10px 10px rgba(155, 155, 155, 0.534);
     padding-bottom: 25px;
 }

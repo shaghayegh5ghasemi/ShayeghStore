@@ -1,0 +1,14 @@
+<div id="content">
+    <p class="title child">
+        ویرایش محصولات
+    </p>
+    <div class="inputs-signup child" style="width: 70%;grid-template-columns: 1fr 1fr;grid-template-rows: 1fr 1fr;grid-column: 1/3;">
+        <%- include('input.ejs',{data:{name:'دسته بندی محصول',placeholder:'دسته بندی مورد نظر خود را وارد کنید'},additional:"availability"}) -%>
+        <%- include('input.ejs',{data:{name:'عنوان محصول',placeholder:'عنوان مورد نظر خود را وارد کنید'},additional:"availability"}) -%>
+        <%- include('input.ejs',{data:{name:'موجودی محصول',placeholder:'موجودی محصول خود را وارد کنید'},additional:"availability"}) -%>
+        <%- include('input.ejs',{data:{name:'قیمت محصول',placeholder:'اقیمت مورد نظر خود را وارد کنید'},additional:"availability"}) -%>
+    </div>
+    <label style="margin-bottom: 15px;">تصویر مورد نظر خود را آپلود کنید</label>
+    <input type="file" class="edit_img" name="img" accept="image/*">
+    <a href="test" class="submitbutton child"> ثبت تغییرات</a>
+</div>

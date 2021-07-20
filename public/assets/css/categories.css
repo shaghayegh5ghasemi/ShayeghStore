@@ -1,6 +1,8 @@
 .categories {
     background-color: white;
     width: 25%;
+    max-height: 200px;
+    overflow: hidden;
     margin-right: 15px;
     box-shadow: 10px 10px 10px rgba(155, 155, 155, 0.534);
     padding-bottom: 25px;

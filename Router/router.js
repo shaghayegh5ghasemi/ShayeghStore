@@ -71,6 +71,26 @@ router.get("/addbalance",function(req,res){
 
 
 
+router.post("/editinfo",function(req,res){
+  if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo = db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken},async function(err,user){
+        if(user==undefined){
+          res.redirect('/404')
+        }
+        else{
+          //TODO
+          //change user info
+        }
+      })
+    })
+  }
+})
+
 
 router.get("/profile",function(req,res){
   if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){

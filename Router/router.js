@@ -218,14 +218,17 @@ router.get("/profile",function(req,res){
       var dbo = db.db("shayegh")
       dbo.collection("Users").findOne({token:req.cookies.usertoken},async function(err,user){
         if(user==undefined){
-          dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+          dbo.collection("Admins").findOne({token:req.cookies.admintoken},async function(err,admin){
             if(admin==undefined){
               res.redirect('/404')
             }
             else{
+              products = await dbo.collection("Products").find({}).toArray()
+              orders = await dbo.collection("Orders").find({}).toArray()
+              categories = await dbo.collection("Categories").find({}).toArray()
               renderdata = {
                 main_path:'./login_signup_profile/adminpanel.ejs',
-                main_data:{},
+                main_data:{products:products,orders:orders,categories:categories},
                 user:{firstname:"admin",lastname:""}
               }
               res.render('index.ejs',renderdata)

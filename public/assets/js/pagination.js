@@ -52,9 +52,30 @@ function change_page(element_id) {
     fetch_product()
 }
 
-function price(){}
+function price(){
+    
+}
 
-function sort(){}
+// everytime user change the sorting mode data willbe send to the server
+function sort(mode){
+    if(mode == "highest_price"){
+        desired_product.sorting = "highest_price"
+        document.getElementsByClassName("price_btn")[0].style = "background-color: rgb(0, 149, 255); box-shadow: 0px 10px 20px rgba(0, 149, 255, 0.4);"
+        document.getElementsByClassName("price")[0].style.color = "white"
+        document.getElementsByClassName("best_btn")[0].style.boxShadow = "none"
+        document.getElementsByClassName("best_btn")[0].style.backgroundColor = "white"
+        document.getElementsByClassName("best_seller")[0].style.color = "black"
+    }
+    else if(mode == "best_seller") {
+        desired_product.sorting = "best_seller"
+        document.getElementsByClassName("best_btn")[0].style = "background-color: rgb(0, 149, 255); box-shadow: 0px 10px 20px rgba(0, 149, 255, 0.4);"
+        document.getElementsByClassName("best_seller")[0].style.color = "white"
+        document.getElementsByClassName("price_btn")[0].style.boxShadow = "none"
+        document.getElementsByClassName("price_btn")[0].style.backgroundColor = "white"
+        document.getElementsByClassName("price")[0].style.color = "black"
+    }
+    fetch_product()
+}
 
 // everytime a user check a category all the chosen categories will be send to the server 
 function category(){

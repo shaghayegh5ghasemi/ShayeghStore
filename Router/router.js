@@ -705,8 +705,8 @@ router.get("/404",function(req,res){
           dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
             renderdata = {
               main_path:'./404.ejs',
-              main_data:{firstname:"admin",lastname:""},
-              user:user
+              main_data:{},
+              user:{firstname:"admin",lastname:""}
             }
             res.render('index.ejs',renderdata)
             res.end()

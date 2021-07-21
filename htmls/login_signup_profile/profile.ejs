@@ -1,12 +1,12 @@
 <div id="content">
-    <!-- <div class="profile-title child">
-        <a href="test" class="tinybtn child">افزایش موجودی</a>
-        <div style="padding: 3px;">موجودی حساب شما: 1444000 تومان </div>
-        <div style="font-size: 20px;"> | شقایق عزیز، خوش آمدید </div>
-    </div> -->
-    <div class=" child">
-        <div style="font-size: 20px;"> شقایق عزیز، خوش آمدید </div>
+    <div class="profile-title child">
+        <a href="/addbalance" class="tinybtn child">افزایش موجودی</a>
+        <div style="padding: 3px;">موجودی حساب شما: <%= data.user.balance %> تومان </div>
+        <div style="font-size: 20px;"> | <%= data.user.firstname %> عزیز، خوش آمدید </div>
     </div>
+    <!-- <div class=" child">
+        <div style="font-size: 20px;"> <%= data.user.firstname %> عزیز، خوش آمدید </div>
+    </div> -->
     <div class="tabbar child">
         <button class="tablink tablinkleft" onclick="changetab(event,'receipts')">رسید ها</button>
         <button class="tablink tablinkright unselected" onclick="changetab(event,'profile')">پروفایل</button>

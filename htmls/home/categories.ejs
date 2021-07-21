@@ -2,17 +2,8 @@
     <p>دسته بندی ها</p>
     <hr style="height:0.5px;border-width:0;background-color:rgba(151, 151, 151, 0.6)">
     <div class="scrollbar">
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
-        <%- include('checkbox.ejs',{data:{name:'دسته بندی یک',value:'category1'}}) -%>
+        <% for(let i = 0 ; i < categories.length ; i++) { %>
+        <%- include('checkbox.ejs',{data:{name:categories[i].name,value:categories[i].name}}) -%>
+        <% } %>
     </div>
 </div>

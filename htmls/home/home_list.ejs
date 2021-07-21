@@ -1,6 +1,6 @@
 <div class="home_list">
     <div class="filter_boxes">
-        <%- include("categories.ejs"); -%>
+        <%- include("categories.ejs",{categories:categories}); -%>
         <div style="margin-top: 15px;"><%- include("price_filter.ejs"); -%></div>
     </div>
     <div class="products">

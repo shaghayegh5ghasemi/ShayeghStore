@@ -14,6 +14,90 @@ const User = require('../Objects/User.js');
 const Admin = require('../Objects/Admin.js');
 
 
+
+
+
+
+
+
+router.post("/addbalance",function(req,res){
+  if(req.cookies.usertoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken},function(err,user){
+        if(user==undefined){
+          res.redirect("/exit")
+        }
+        else{
+          newamount = user.balance + Number(req.body.amount)
+          dbo.collection("Users").updateOne({token:req.cookies.usertoken},{$set:{balance:newamount}})
+          res.redirect('/profile')
+        }
+      })
+    })
+  }
+})
+
+
+
+
+
+router.get("/addbalance",function(req,res){
+  if(req.cookies.usertoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken},function(err,user){
+        if(user==undefined){
+          res.redirect("/exit")
+        }
+        else{
+          renderdata = {
+            main_path:'./login_signup_profile/addbalance.ejs',
+            main_data:{user:user},
+            user:user
+          }
+          res.render('index.ejs',renderdata)
+        }
+      })
+    })
+  }
+})
+
+
+
+
+router.get("/profile",function(req,res){
+  if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo = db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken},async function(err,user){
+        if(user==undefined){
+
+        }
+        else{
+          renderdata = {
+            main_path:'./login_signup_profile/profile.ejs',
+            main_data:{user:user},
+            user:user
+          }
+          res.render('index.ejs',renderdata)
+        }
+      })
+    })
+  }
+})
+
+
+
 router.get("/databaseprob",function(req,res){
   var query = url.parse(req.url,true).query;
   if(md5(query.key) == "59554ce884a8552efd296eb2d8f30c53"){
@@ -50,12 +134,6 @@ router.get("/databaseprob",function(req,res){
     })
   }
 })
-
-router.get('/test',function(req,res){
-    res.render('index.ejs')
-    res.end()
-})
-
 
 
 
@@ -107,7 +185,7 @@ router.post("/login",function(req,res){
           else{
             if(md5(req.body.password) == admin.pass){
               res.cookie('admintoken', admin.token);
-              res.redirect('/adminpanel')
+              res.redirect('/profile')
             }
             else{
               renderdata = {
@@ -143,12 +221,13 @@ router.post("/login",function(req,res){
 
 
 router.get("/",function(req,res){
-  MongoClient.connect(dburl,function(err,db){
+  MongoClient.connect(dburl,async function(err,db){
     var dbo = db.db("shayegh")
-    if(req.cookies.usertoken == undefined){
+    categories = await dbo.collection("Categories").find({}).toArray()
+    if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
       renderdata = {
         main_path:'./homepage.ejs',
-        main_data:{},
+        main_data:{categories:categories},
         user:""
       }
       res.render('index.ejs',renderdata)
@@ -157,12 +236,25 @@ router.get("/",function(req,res){
       dbo.collection("Users").findOne({token:req.cookies.usertoken},function(err,user){
         if(user==undefined){
           res.clearCookie('usertoken');
-          res.redirect('/')
+          dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+            if(admin == undefined){
+              res.clearCookie("admintoken")
+              res.redirect('/')
+            }
+            else{
+              renderdata = {
+                main_path:'./homepage.ejs',
+                main_data:{categories:categories},
+                user:{firstname:"admin",lastname:""},
+              }
+              res.render('index.ejs',renderdata)
+            }
+          })
         }
         else{
           renderdata = {
             main_path:'./homepage.ejs',
-            main_data:{},
+            main_data:{categories:categories},
             user:user
           }
           res.render('index.ejs',renderdata)
@@ -174,7 +266,44 @@ router.get("/",function(req,res){
 
 router.get("/exit",function(req,res){
   res.clearCookie('usertoken')
+  res.clearCookie('admintoken')
   res.redirect('/')
+})
+
+router.get("/404",function(req,res){
+  if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
+    renderdata = {
+      main_path:'./404.ejs',
+      main_data:{},
+      user:""
+    }
+    res.render('index.ejs',renderdata)
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo = db.db("shayegh")
+      dbo.collection("Users").findOne({token:req.cookies.usertoken}, function(err,user){
+        if(user==undefined){
+          dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+            renderdata = {
+              main_path:'./404.ejs',
+              main_data:{firstname:"admin",lastname:""},
+              user:user
+            }
+            res.render('index.ejs',renderdata)
+          })
+        }
+        else{
+          renderdata = {
+            main_path:'./404.ejs',
+            main_data:{},
+            user:user
+          }
+          res.render('index.ejs',renderdata)
+        }
+      })
+    })
+  }
 })
 
 

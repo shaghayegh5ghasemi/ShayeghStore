@@ -1,9 +1,11 @@
-<div class="editprofile">
+<div id="div-etab" class="editprofile">
+    <form action="/editinfo" method="POST">
     <div class="inputs-profile">
-        <%- include('input.ejs',{data:{name:'نام خانوادگی',placeholder:'قاسمی'},additional:""}) -%>
-        <%- include('input.ejs',{data:{name:'نام',placeholder:'شقایق'},additional:""}) -%>
-        <%- include('input.ejs',{data:{name:'رمز عبور',placeholder:'رمز عبور خود را وارد کنید'},additional:"grid-1-3"}) -%>
-        <%- include('textarea.ejs',{data:{name:'آدرس',placeholder:'ایران - تهران - قلب حسن'}}) -%>
+        <%- include('input.ejs',{data:{name:'نام خانوادگی',placeholder:user.lastname},additional:"",name:"last_name",type:"text"}) -%>
+        <%- include('input.ejs',{data:{name:'نام',placeholder:user.firstname},additional:"",name:"first_name",type:"text"}) -%>
+        <%- include('input.ejs',{data:{name:'رمز عبور',placeholder:'رمز عبور خود را وارد کنید'},additional:"grid-1-3",name:"password",type:"password"}) -%>
+        <%- include('textarea.ejs',{data:{name:'آدرس',placeholder:user.address},name:"address"}) -%>
     </div>
-    <a href="test" class="editbtn child">ویرایش اطلاعات</a>
+    <button type="submit" class="editbtn child">ویرایش اطلاعات</button>
+    </form>
 </div>

@@ -1,4 +1,4 @@
 <div class="input <%= additional %>">
     <label class="input-title"><%= data.name %></label>
-    <input type="<%= type %>" name="<%= name %>" class="input-space <%= additional %>" placeholder="<%= data.placeholder %>" type="text">
+    <input type="<%= type %>" oninput="validation(this.name)" name="<%= name %>" class="input-space input_data <%= additional %>" placeholder="<%= data.placeholder %>" type="text">
 </div>

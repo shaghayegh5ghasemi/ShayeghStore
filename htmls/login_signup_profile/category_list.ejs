@@ -1,36 +1,19 @@
-<div class="receipts child">
+<div id="div-ctab" style="display: none;" class="receipts child">
     <table>
         <tr id="trth">
           <th>نام دسته بندی</th>
           <th>عملیات</th>
         </tr>
+        <% for(let i =0 ;i<categories.length ;i++){ %>
         <tr>
-            <td>دسته بندی</td>
+            <td> <%= categories[i].name %></td>
             <td>
-                <a class="op" href="123">ویرایش دسته بندی</a>
-                <a class="op" href="123">x حذف دسته بندی</a>
+                <% if(categories[i].isdeleteable) {%>
+                <a class="op" href="/editcategory?id=<%= categories[i]._id %>">ویرایش دسته بندی</a>
+                <a class="op" href="/removecategory?id=<%= categories[i]._id %>">x حذف دسته بندی</a>
+                <% } %>
             </td>
         </tr>
-        <tr>
-            <td>دسته بندی</td>
-            <td>
-                <a class="op" href="123">ویرایش دسته بندی</a>
-                <a class="op" href="123">x حذف دسته بندی</a>
-            </td>
-        </tr>
-        <tr>
-            <td>دسته بندی</td>
-            <td>
-                <a class="op" href="123">ویرایش دسته بندی</a>
-                <a class="op" href="123">x حذف دسته بندی</a>
-            </td>
-        </tr>
-        <tr>
-            <td>دسته بندی</td>
-            <td>
-                <a class="op" href="123">ویرایش دسته بندی</a>
-                <a class="op" href="123">x حذف دسته بندی</a>
-            </td>
-        </tr>
+        <% } %>
       </table>
 </div>

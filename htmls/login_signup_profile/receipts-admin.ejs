@@ -1,4 +1,4 @@
-<div class="receipts child">
+<div id="div-rtab" style="display: none;" class="receipts child">
     <table>
         <tr id="trth">
           <th>کد پیگیری</th>
@@ -7,33 +7,14 @@
           <th>نام خریدار</th>
           <th>آدرس ارسال شده</th>
         </tr>
-        <tr>
-            <td style="font-family: Arial, Helvetica, sans-serif;">SHOP123456</td>
-            <td>موس گیمینگ ریزر</td>
-            <td>10000 تومان</td>
-            <td>شقایق</td>
-            <td>ایران-تهران-قلب حسن</td>
-        </tr>
-        <tr>
-            <td>SHOP123456</td>
-            <td>موس گیمینگ ریزر</td>
-            <td>10000 تومان</td>
-            <td>شقایق</td>
-            <td>ایران-تهران-قلب حسن</td>
-        </tr>
-        <tr>
-            <td>SHOP123456</td>
-            <td>موس گیمینگ ریزر</td>
-            <td>10000 تومان</td>
-            <td>شقایق</td>
-            <td>ایران-تهران-قلب حسن</td>
-        </tr>
-        <tr>
-            <td>SHOP123456</td>
-            <td>موس گیمینگ ریزر</td>
-            <td>10000 تومان</td>
-            <td>شقایق</td>
-            <td>ایران-تهران-قلب حسن</td>
-        </tr>
+        <% for(let i =0 ; i < orders.length ;i++) { %>
+            <tr name="objects" data-name="<%= orders[i].sell_id %>">
+                <td style="font-family: Arial, Helvetica, sans-serif;"><%= orders[i].sell_id %></td>
+                <td><%= orders[i].product_name %></td>
+                <td><%= orders[i].price %> تومان </td>
+                <td><%= orders[i].customer_name %></td>
+                <td><%= orders[i].recv_address %></td>
+            </tr>
+            <% } %>
       </table>
 </div>

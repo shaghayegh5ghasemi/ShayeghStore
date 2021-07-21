@@ -19,6 +19,7 @@ const Admin = require('../Objects/Admin.js');
 
 router.post("/test", function(req, res){
   console.log(req.body)
+  res.json({'hi':1})
 })
 
 router.post("/addbalance",function(req,res){

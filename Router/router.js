@@ -218,7 +218,20 @@ router.get("/profile",function(req,res){
       var dbo = db.db("shayegh")
       dbo.collection("Users").findOne({token:req.cookies.usertoken},async function(err,user){
         if(user==undefined){
-          //adminpanel
+          dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+            if(admin==undefined){
+              res.redirect('/404')
+            }
+            else{
+              renderdata = {
+                main_path:'./login_signup_profile/adminpanel.ejs',
+                main_data:{},
+                user:{firstname:"admin",lastname:""}
+              }
+              res.render('index.ejs',renderdata)
+              res.end()
+            }
+          })
         }
         else{
           orders =await dbo.collection("Orders").find({customer_id:user._id}).toArray()

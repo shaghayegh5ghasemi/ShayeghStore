@@ -18,6 +18,8 @@ const Admin = require('../Objects/Admin.js');
 
 
 
+
+
 router.post("/addbalance",function(req,res){
   if(req.cookies.usertoken == undefined){
     res.redirect('/404')
@@ -219,12 +221,13 @@ router.post("/login",function(req,res){
 
 
 router.get("/",function(req,res){
-  MongoClient.connect(dburl,function(err,db){
+  MongoClient.connect(dburl,async function(err,db){
     var dbo = db.db("shayegh")
+    categories = await dbo.collection("Categories").find({}).toArray()
     if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
       renderdata = {
         main_path:'./homepage.ejs',
-        main_data:{},
+        main_data:{categories:categories},
         user:""
       }
       res.render('index.ejs',renderdata)
@@ -241,7 +244,7 @@ router.get("/",function(req,res){
             else{
               renderdata = {
                 main_path:'./homepage.ejs',
-                main_data:{},
+                main_data:{categories:categories},
                 user:{firstname:"admin",lastname:""},
               }
               res.render('index.ejs',renderdata)
@@ -251,7 +254,7 @@ router.get("/",function(req,res){
         else{
           renderdata = {
             main_path:'./homepage.ejs',
-            main_data:{},
+            main_data:{categories:categories},
             user:user
           }
           res.render('index.ejs',renderdata)

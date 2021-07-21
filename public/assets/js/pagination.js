@@ -1,6 +1,6 @@
 var desired_product = {
     "page": 1,
-    "price_range": "", 
+    "price_range": "10-1000", 
     "sorting": "best_seller",
     "categories": []
 }
@@ -52,8 +52,12 @@ function change_page(element_id) {
     fetch_product()
 }
 
+// everytime the user change the range of the price new data will be sent to the server
 function price(){
-    
+    range = ''
+    range = document.getElementsByClassName("rubber-value-min")[0].innerHTML + "-" + document.getElementsByClassName("rubber-value-max")[0].innerHTML
+    desired_product.price_range = range
+    fetch_product()
 }
 
 // everytime user change the sorting mode data willbe send to the server

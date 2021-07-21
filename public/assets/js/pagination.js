@@ -1,6 +1,6 @@
 var desired_product = {
     "page": 1,
-    "price_range": "10-1000", 
+    "price_range": "0-5000000", 
     "sorting": "best_seller",
     "categories": []
 }

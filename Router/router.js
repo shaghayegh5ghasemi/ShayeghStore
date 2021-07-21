@@ -99,6 +99,7 @@ router.get("/buy",function(req,res){
 })
 
 router.post("/getproducts",function(req,res){
+  console.log(req.body)
   MongoClient.connect(dburl,async function(err,db){
     var dbo = db.db("shayegh")
     products =[]

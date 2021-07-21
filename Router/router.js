@@ -99,6 +99,7 @@ router.get("/buy",function(req,res){
 })
 
 router.post("/getproducts",function(req,res){
+  console.log(req.body)
   MongoClient.connect(dburl,async function(err,db){
     var dbo = db.db("shayegh")
     products =[]
@@ -135,6 +136,21 @@ router.post("/getproducts",function(req,res){
   })
 })
 
+router.post("/search", function(req, res){
+  MongoClient.connect(dburl,async function(err,db){
+    var dbo = db.db("shayegh")
+    var search_str = req.body.query
+    final_res = []
+    tproducts = await dbo.collection("Products").find({}).toArray()
+    for(let i = 0; i<tproducts.length;i++){
+      if(tproducts[i].name.includes(search_str)){
+        final_res.push(tproducts[i])
+      }
+    }
+    res.json({products:final_res})
+    res.end()
+  })
+})
 
 router.post("/addbalance",function(req,res){
   if(req.cookies.usertoken == undefined){

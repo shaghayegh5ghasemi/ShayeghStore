@@ -108,8 +108,8 @@ for (var i = 0; i < rubberIpts.length; i++) {
     const minPrice = rubberIpts[i].querySelector(".rubber-value-min");
     const maxPrice = rubberIpts[i].querySelector(".rubber-value-max");
 
-    var RubberMinPrice = 10;
-    var RubberMaxPrice = 1000;
+    var RubberMinPrice = 0;
+    var RubberMaxPrice = 5000000;
 
     function getMinPrice(dragOffsetMin) {
         rubberMinPrice = ((RubberMaxPrice/200) * dragOffsetMin) + (((RubberMinPrice - ((RubberMinPrice/200) * dragOffsetMin))));

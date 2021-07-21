@@ -1,6 +1,6 @@
 var desired_product = {
     "page": 1,
-    "price_range": "10-1000", 
+    "price_range": "0-5000000", 
     "sorting": "best_seller",
     "categories": []
 }
@@ -60,8 +60,6 @@ function fetch_product(){
     );
 }
 
-
-// <%- include('product_box.ejs',{data:{productname:'موس گیمینگ ریزر',productcat:'دسته بندی یک', productprice:'10.000', source:'img/sample_product.jpg',action:'خرید محصول'}}) -%>
 //this function will be called when the user changes the page
 function change_page(element_id) {
     //define the page the user want to visit

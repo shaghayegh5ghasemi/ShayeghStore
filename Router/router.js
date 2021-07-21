@@ -128,7 +128,9 @@ router.post("/getproducts",function(req,res){
     if(req.body.sorting == "highest_price"){
       final_res.sort((a,b) => b.price- a.price);
     }
-    res.json({products:final_res})
+    pagenumber = Number(req.body.page)
+    
+    res.json({products:final_res.slice((pagenumber-1)*15,(pagenumber)*15)})
     res.end()
   })
 })
@@ -366,10 +368,12 @@ router.get("/",function(req,res){
   MongoClient.connect(dburl,async function(err,db){
     var dbo = db.db("shayegh")
     categories = await dbo.collection("Categories").find({}).toArray()
+    final_res = await dbo.collection("Products").find({}).toArray()
+    pagenumbers = Math.ceil(final_res.length/15)
     if(req.cookies.usertoken == undefined && req.cookies.admintoken == undefined){
       renderdata = {
         main_path:'./homepage.ejs',
-        main_data:{categories:categories},
+        main_data:{categories:categories,pagenumbers:pagenumbers},
         user:""
       }
       res.render('index.ejs',renderdata)
@@ -387,7 +391,7 @@ router.get("/",function(req,res){
             else{
               renderdata = {
                 main_path:'./homepage.ejs',
-                main_data:{categories:categories},
+                main_data:{categories:categories,pagenumbers:pagenumbers},
                 user:{firstname:"admin",lastname:""},
               }
               res.render('index.ejs',renderdata)
@@ -398,7 +402,7 @@ router.get("/",function(req,res){
         else{
           renderdata = {
             main_path:'./homepage.ejs',
-            main_data:{categories:categories},
+            main_data:{categories:categories,pagenumbers:pagenumbers},
             user:user
           }
           res.render('index.ejs',renderdata)

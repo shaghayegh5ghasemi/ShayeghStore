@@ -17,8 +17,9 @@ const Admin = require('../Objects/Admin.js');
 
 
 
-
-
+router.post("/test", function(req, res){
+  console.log(req.body)
+})
 
 router.post("/addbalance",function(req,res){
   if(req.cookies.usertoken == undefined){

@@ -88,12 +88,14 @@ a, a:hover, a:focus, a:active {
     cursor: pointer;
     border-radius: 24px;
     margin-top: 10px;
+    z-index: 2;
 }
 
 .dropdown {
     width: 20%;
     position: relative;
     display: inline-block;
+    z-index: 2;
 }
   
 .dropdown_content {
@@ -106,7 +108,7 @@ a, a:hover, a:focus, a:active {
     margin-top: -20px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    z-index: -1;
+    z-index: 0;
 }
   
 .dropdown_content a {

@@ -11,11 +11,6 @@
 }
 
 .products {
-    width: 74%;
-    float: left;
-}
-
-.products {
     display: grid;
     grid-template-columns: auto auto auto;
 }

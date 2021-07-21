@@ -1,5 +1,7 @@
-.center {
+  .center {
     text-align: center;
+    margin: auto;
+    padding: 0;
   }
   
   .pagination {
@@ -12,7 +14,7 @@
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color .3s;
-    border: 1px solid rgb(255, 241, 241);
+    border: 1px solid rgb(255, 247, 247);
     margin: 0 4px;
   }
   
@@ -22,4 +24,4 @@
     border: 1px solid rgb(0, 149, 255);
   }
   
-  .pagination a:hover:not(.active) {background-color: rgb(255, 241, 241);}
+  .pagination a:hover:not(.active) {background-color: rgb(255, 247, 247);}

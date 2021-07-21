@@ -1,5 +1,3 @@
-const e = require("express")
-
 function changetab(ds){
     if(ds=='receipts'){
         document.getElementById('title-rtab').style.display = 'block'
@@ -21,18 +19,28 @@ function changetab(ds){
 
 
 //validation: min length and characters of password, max length of texts, remove whitespaces
-function alphanumeric(inputtxt){ 
-    var letters = /^(?=.*[a-zA-Z])(?=.*[0-9])/
-    if(inputtxt.value.match(letters)){
+function alphanumeric(password){ 
+    strength = 0;
+    if (password.match(/[a-z]+/)){
+        strength+=1;
+    }
+    if (password.match(/[A-Z]+/)){
+        strength+=1;
+    }
+    if (password.match(/[0-9]+/)){
+        strength+=1;
+    }
+    if(strength>1){
         return true
     }
-    return false
+    else{
+        return false;
+    }
 }
 
 //validation
 function validateForm(name){
     element = document.getElementsByName(name)[0]
-    console.log(element)
     element.style.border = "solid"
     element.style.borderWidsth = "15px"
     //address

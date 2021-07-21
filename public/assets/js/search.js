@@ -1,5 +1,5 @@
 function search_product(){
-    search_str = document.getElementById("search_str").value
+    var search_str = document.getElementsByClassName("search_input")[0].value
     fetch('/search', {
         method: "POST",
         body: JSON.stringify({"query": search_str}),

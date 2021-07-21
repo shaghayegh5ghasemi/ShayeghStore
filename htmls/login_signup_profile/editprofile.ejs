@@ -1,5 +1,5 @@
 <div id="div-etab" class="editprofile">
-    <form action="/editinfo" method="POST">
+    <form action="/editinfo" method="POST" onsubmit="return validateForm()">
     <div class="inputs-profile">
         <%- include('input.ejs',{data:{name:'نام خانوادگی',placeholder:user.lastname},additional:"",name:"last_name",type:"text"}) -%>
         <%- include('input.ejs',{data:{name:'نام',placeholder:user.firstname},additional:"",name:"first_name",type:"text"}) -%>

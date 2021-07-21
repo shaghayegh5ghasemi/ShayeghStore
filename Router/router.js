@@ -216,7 +216,7 @@ router.post("/editinfo",function(req,res){
           res.redirect('/404')
         }
         else{
-          dbo.collection("users").updateOne({token:req.cookies.usertoken},{$set:{
+          dbo.collection("Users").updateOne({token:req.cookies.usertoken},{$set:{
             firstname:req.body.first_name,
             pass:md5(req.body.password),
             lastname:req.body.last_name,

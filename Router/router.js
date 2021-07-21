@@ -16,11 +16,41 @@ const Admin = require('../Objects/Admin.js');
 
 
 
-
-router.post("/test", function(req, res){
-  console.log(req.body)
-  res.json({'hi':1})
+router.post("/getproducts",function(req,res){
+  MongoClient.connect(dburl,async function(err,db){
+    var dbo = db.db("shayegh")
+    products =[]
+    listminmax = req.body.price_range.split('-')
+    min = Number(listminmax[0])
+    max = Number(listminmax[1])
+    final_res = []
+    tproducts = await dbo.collection("Products").find({}).toArray()
+    if(req.body.categories.length >0){
+      for(let i =0;i<tproducts.length;i++){
+        if(req.body.categories.indexOf(tproducts[i].category) != -1){
+          products.push(tproducts[i])
+        }
+      }
+    }
+    else{
+      products = tproducts
+    }
+    for(let i =0;i<products.length;i++){
+      if(products[i].price<=max && products[i].price >= min){
+        final_res.push(products[i])
+      }
+    }
+    if(req.body.sorting == "best_seller"){
+      final_res.sort((a,b) => b.sold- a.sold);
+    }
+    if(req.body.sorting == "highest_price"){
+      final_res.sort((a,b) => b.price- a.price);
+    }
+    res.json({products:final_res})
+    res.end()
+  })
 })
+
 
 router.post("/addbalance",function(req,res){
   if(req.cookies.usertoken == undefined){

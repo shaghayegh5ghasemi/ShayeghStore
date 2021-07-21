@@ -1,5 +1,16 @@
 function search_product(){
-    var search_str = document.getElementsByClassName("search_input")[0].value
+    max = 0
+    var search_str = ""
+    for(let i = 0; i<3 ;i++){
+        search_input = document.getElementsByClassName("search_input")[i].value
+        if(search_input.length > max){
+            max = search_input.length
+            search_str = search_input
+        }
+    }
+    for(let i = 0; i<3 ;i++){
+        document.getElementsByClassName("search_input")[i].value = ""
+    }
     fetch('/search', {
         method: "POST",
         body: JSON.stringify({"query": search_str}),

@@ -21,10 +21,6 @@ router.post("/test", function(req, res){
   console.log(req.body)
 })
 
-router.get("/test", function(req, res){
-  console.log("fuck you")
-})
-
 router.post("/addbalance",function(req,res){
   if(req.cookies.usertoken == undefined){
     res.redirect('/404')

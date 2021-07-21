@@ -56,12 +56,17 @@ function price(){}
 
 function sort(){}
 
-function category(category_value){
+// everytime a user check a category all the chosen categories will be send to the server 
+function category(){
     let checked_cat = []
     let number_of_cat = document.getElementsByClassName("cat_checkbox").length
-    cat = document.getElementsByClassName("cat_checkbox")
+    cat = document.getElementsByClassName("checkbox_round")
+    console.log(cat)
     for(i = 0; i < number_of_cat; i++){
         if (cat[i].checked == true){
+            checked_cat.push(cat[i].value)
         }
     }
+    desired_product.categories = checked_cat
+    fetch_product()
 }

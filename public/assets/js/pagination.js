@@ -5,8 +5,9 @@ var desired_product = {
     "categories": []
 }
 
+
+document.getElementById('1').click()
 //load the page at first without any filter
-fetch_product()
 
 //fetch desired products based on the filters and show the result
 function fetch_product(){
@@ -22,18 +23,24 @@ function fetch_product(){
         box.className = "product_box"
         product_img = document.createElement("img")
         product_img.className = "product_img"
+        product_img.src = "img/sample_product.jpg"
         product_name = document.createElement("h3")
+        product_name.innerHTML = "موس ریزر"
         product_cat = document.createElement("h4")
+        product_cat.innerHTML = "دسته بندی1"
         sep_line = document.createElement("hr")
         sep_line.className = "separate_line"
         bot_info = document.createElement("div")
         bot_info.className = "bottom_part"
         product_price = document.createElement("p")
         product_price.className = "product_price"
+        product_price.innerHTML = "10000"
         price_unit = document.createElement("P")
         price_unit.className = "unit"
-        shop_btn = document.createElement("button")
+        price_unit.innerHTML = "تومان"
+        shop_btn = document.createElement("a")
         shop_btn.className = "shop_btn"
+        shop_btn.innerHTML = "خرید محصول"
         //add children to bottom part
         bot_info.appendChild(product_price)
         bot_info.appendChild(price_unit)
@@ -45,7 +52,7 @@ function fetch_product(){
         box.appendChild(sep_line)
         box.appendChild(bot_info)
         //initialize the elements
-        
+        document.getElementsByClassName('products')[0].appendChild(box)
     }
     );
 }

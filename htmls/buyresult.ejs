@@ -1,0 +1,15 @@
+<div id="content">
+    <% if(data.flag==0) { %>
+        <p style="color: red;" class="title child">
+            تعداد مورد نظر از این کالا در انبار موجود نیست:(
+        </p>
+    <% } else if(data.flag==1){ %>
+        <p style="color: red;" class="title child">
+            موجودی کافی نیست
+        </p>
+    <% } else { %>
+        <p style="color: green;" class="title child">
+            خرید شما با موفقیت انجام شد.
+        </p>
+    <% } %>
+</div>

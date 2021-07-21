@@ -1,18 +1,18 @@
 <div id="content">
-    <div class="profile-title child etab">
+    <div id="title-etab" class="profile-title child">
         <a href="/addbalance" class="tinybtn child">افزایش موجودی</a>
         <div style="padding: 3px;">موجودی حساب شما: <%= data.user.balance %> تومان </div>
         <div style="font-size: 20px;"> | <%= data.user.firstname %> عزیز، خوش آمدید </div>
     </div>
-    <!-- <div class="child rtab">
+    <div id="title-rtab" class="child" style="display: none;">
         <div style="font-size: 20px;"> <%= data.user.firstname %> عزیز، خوش آمدید </div>
-    </div> -->
+    </div>
     <div class="tabbar child">
-        <button class="tablink tablinkleft" onclick="changetab('receipts')">رسید ها</button>
-        <button class="tablink tablinkright unselected" onclick="changetab('profile')">پروفایل</button>
+        <button id="btn-rtab" class="tablink tablinkleft unselected" onclick="changetab('receipts')">رسید ها</button>
+        <button id="btn-etab" class="tablink tablinkright" onclick="changetab('profile')">پروفایل</button>
     </div>
 
-    <!-- <%- include('receipts.ejs') -%> -->
+    <%- include('receipts.ejs') -%>
     <%- include('editprofile.ejs') -%>
     
     

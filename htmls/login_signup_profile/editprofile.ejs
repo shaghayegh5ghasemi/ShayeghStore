@@ -1,4 +1,5 @@
-<div class="editprofile">
+<div id="div-etab" class="editprofile">
+    <form action="/editinfo" method="POST">
     <div class="inputs-profile">
         <%- include('input.ejs',{data:{name:'نام خانوادگی',placeholder:'قاسمی'},additional:"",name:"last_name",type:"text"}) -%>
         <%- include('input.ejs',{data:{name:'نام',placeholder:'شقایق'},additional:"",name:"first_name",type:"text"}) -%>
@@ -6,4 +7,5 @@
         <%- include('textarea.ejs',{data:{name:'آدرس',placeholder:'ایران - تهران - قلب حسن'},name:"address"}) -%>
     </div>
     <button type="submit" class="editbtn child">ویرایش اطلاعات</button>
+    </form>
 </div>

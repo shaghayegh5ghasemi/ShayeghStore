@@ -2,12 +2,14 @@
     <p class="title child">
         اضافه کردن محصول جدید
     </p>
+    <form action="/addproduct" method="POST" enctype="multipart/form-data">
     <div class="inputs-signup child" style="grid-template-rows: 1fr;grid-template-columns: 1fr 1fr;">
-        <%- include('input.ejs',{data:{name:'موجودی محصول',placeholder:'موجودی محصول خود را وارد کنید'},additional:""}) -%>
-        <%- include('input.ejs',{data:{name:'عنوان محصول',placeholder:'عنوان مورد نظر خود را وارد کنید'},additional:""}) -%>
+        <%- include('input.ejs',{data:{name:'موجودی محصول',placeholder:'موجودی محصول خود را وارد کنید'},additional:"",type:"number",name:"count"}) -%>
+        <%- include('input.ejs',{data:{name:'عنوان محصول',placeholder:'عنوان مورد نظر خود را وارد کنید'},additional:"",type:"text",name:"name"}) -%>
     </div>
-    <%- include('input.ejs',{data:{name:'قیمت محصول',placeholder:'اقیمت مورد نظر خود را وارد کنید'},additional:""}) -%>
+    <%- include('input.ejs',{data:{name:'قیمت محصول',placeholder:'اقیمت مورد نظر خود را وارد کنید'},additional:"",type:"number",name:"price"}) -%>
     <label style="margin: 15px;">تصویر مورد نظر خود را آپلود کنید</label>
     <input type="file" class="edit_img" name="img" accept="image/*">
-    <a href="test" class="submitbutton child">اضافه کردن</a>
+    <button type="submit" class="submitbutton child">اضافه کردن</button>
+    </form>
 </div>

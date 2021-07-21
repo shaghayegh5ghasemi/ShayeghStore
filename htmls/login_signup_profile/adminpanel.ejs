@@ -3,26 +3,41 @@
         <div style="font-size: 25px;"> ادمین عزیز، خوش آمدید </div>
     </div>
     <div class="tabbar child">
-        <button class="tablink tablinkleft unselected" onclick="changetab(event,'receipts')">رسید ها</button>
-        <button class="tablink unselected" onclick="changetab(event,'profile')">لیست دسته ها</button>
-        <button class="tablink tablinkright " onclick="changetab(event,'profile')">لیست کالا ها</button>
+        <button id="btn-rtab" class="tablink tablinkleft unselected" onclick="changetab_a('receipts')">رسید ها</button>
+        <button id="btn-ctab" class="tablink unselected" onclick="changetab_a('categories')">لیست دسته ها</button>
+        <button id="btn-ptab" class="tablink tablinkright " onclick="changetab_a('products')">لیست کالا ها</button>
     </div>
-    <button class="addbtn">ایجاد دسته بندی جدید +</button>
-    <!-- <%- include('input.ejs',{data:{name:'جستجوی کد پیگیری',placeholder:'کد پیگری را برای جستجو وارد کنید'},additional:""}) -%>
-    <%- include('receipts-admin.ejs') -%> -->
-    <!-- <%- include('category_list.ejs') -%> -->
-    <div style="display: grid;grid-template-columns: auto auto auto;width: 70%;">
-        <div style="width: 100%;">
-            <div class="information_adp">12</div>
-            <%- include('../home/product_box.ejs',{data:{productname:'موس گیمینگ ریزر',productcat:'دسته بندی یک', productprice:'10.000', source:'img/sample_product.jpg', action:'ویرایش محصول'}}) -%>
+    <a id="mid-ctab" style="display: none;" href="/addcategory" class="addbtn">ایجاد دسته بندی جدید +</a>
+    <a id="mid-ptab" href="/addproduct" class="addbtn">ایجاد  محصول جدید +</a>
+    <div style="display: none;" id="mid-rtab">
+        <div class="input">
+            <label class="input-title">جستجوی کدپیگیری</label>
+            <input id="searchinput" oninput="fastsearch()" type="text" class="input-space" placeholder="جستجوی سریع" type="text">
         </div>
+    </div>
+    
+    <%- include('receipts-admin.ejs',{orders:data.orders}) -%>
+    <%- include('category_list.ejs',{categories:data.categories}) -%>
+    <div id="div-ptab" style="display: grid;grid-template-columns: auto auto auto;width: 70%;">
+        <% for (let i = 0 ; i <data.products.length ;i++){ %>
         <div style="width: 100%;">
-            <div class="information_adp">12</div>
-            <%- include('../home/product_box.ejs',{data:{productname:'موس گیمینگ ریزر',productcat:'دسته بندی یک', productprice:'10.000', source:'img/sample_product.jpg', action:'ویرایش محصول'}}) -%>
+            <div class="information_adp"><%= data.products[i].count %></div>
+            <%- include('../home/product_box.ejs',{data:{productname:data.products[i].name,href:"/editproduct?id="+data.products[i]._id,productcat:data.products[i].category, productprice:data.products[i].price, source:data.products[i].image, action:'ویرایش محصول'}}) -%>
         </div>
-        <div style="width: 100%;">
-            <div class="information_adp">12</div>
-            <%- include('../home/product_box.ejs',{data:{productname:'موس گیمینگ ریزر',productcat:'دسته بندی یک', productprice:'10.000', source:'img/sample_product.jpg', action:'ویرایش محصول'}}) -%>
-        </div>
+        <% } %>
     </div>
 </div>
+
+<script>
+    function fastsearch(){
+        value=document.getElementById("searchinput").value;
+        document.getElementsByName("objects").forEach(function(doc){
+            if(!doc.dataset.name.includes(value)){
+                doc.style.display="none"
+            }
+            else{
+                doc.style.display=""
+            }
+        })
+    }
+  </script>

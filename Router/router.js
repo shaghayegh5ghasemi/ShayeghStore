@@ -17,6 +17,243 @@ const Admin = require('../Objects/Admin.js');
 
 
 
+
+
+
+
+router.get("/removecategory",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          var query = url.parse(req.url,true).query
+          c_id = mongo.ObjectId(query.id)
+          dbo.collection("Categories").findOne({_id:c_id},function(err,category){
+            dbo.collection("Products").updateMany({category:category.name},{$set:{category:"دسته بندی نشده"}})
+            dbo.collection("Categories").deleteOne({_id:c_id})
+            res.redirect("/profile")
+          })
+        }
+      })
+    })
+  }
+})
+
+
+
+
+router.post("/editcategory",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          var query = url.parse(req.url,true).query
+          c_id = mongo.ObjectId(query.id)
+          dbo.collection("Categories").findOne({_id:c_id},function(err,category){
+            dbo.collection("Products").updateMany({category:category.name},{$set:{category:req.body.name}})
+            dbo.collection("Categories").updateOne({_id:c_id},{$set:{name:req.body.name}})
+            res.redirect("/profile")
+          })
+        }
+      })
+    })
+  }
+})
+
+
+router.get("/editcategory",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          var query = url.parse(req.url,true).query
+          renderdata = {
+            main_path:'./login_signup_profile/edit_category.ejs',
+            main_data:{id:query.id},
+            user:{firstname:"admin",lastname:""}
+          }
+          res.render('index.ejs',renderdata)
+          res.end()
+        }
+      })
+    })
+  }
+})
+
+
+
+router.post("/addcategory",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          ncat = new Category(req.body.name,true)
+          dbo.collection("Categories").insertOne(ncat,function(err,dbasf){
+            res.redirect("/profile")
+          })
+        }
+      })
+    })
+  }
+})
+
+
+router.get("/addcategory",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          renderdata = {
+            main_path:'./login_signup_profile/add_category.ejs',
+            main_data:{},
+            user:{firstname:"admin",lastname:""}
+          }
+          res.render('index.ejs',renderdata)
+          res.end()
+        }
+      })
+    })
+  }
+})
+
+
+
+
+router.post("/editproduct",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          var query = url.parse(req.url,true).query
+          p_id = mongo.ObjectId(query.id)
+          dbo.collection("Products").updateOne({_id:p_id},{$set:{category:req.body.category,name:req.body.name,price:Number(req.body.price),count:Number(req.body.count)}})
+          res.redirect("/profile")
+        }
+      })
+    })
+  }
+})
+
+
+
+router.get("/editproduct",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          var query = url.parse(req.url,true).query
+          renderdata = {
+            main_path:'./login_signup_profile/edit_product.ejs',
+            main_data:{id:query.id},
+            user:{firstname:"admin",lastname:""}
+          }
+          res.render('index.ejs',renderdata)
+          res.end()
+        }
+      })
+    })
+  }
+})
+
+
+router.post("/addproduct",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          newp = new Product(req.body.name,Number(req.body.price),Number(req.body.count),"img/sample_product.jpg")
+          dbo.collection("Products").insertOne(newp,function(err,asd){
+            res.redirect('/profile')
+          })
+        }
+      })
+    })
+  }
+})
+
+
+router.get("/addproduct",function(req,res){
+  if(req.cookies.admintoken == undefined){
+    res.redirect('/404')
+  }
+  else{
+    MongoClient.connect(dburl,function(err,db){
+      var dbo= db.db("shayegh")
+      dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
+        if(admin==undefined){
+          res.redirect("/404")
+        }
+        else{
+          renderdata = {
+            main_path:'./login_signup_profile/add_product.ejs',
+            main_data:{},
+            user:{firstname:"admin",lastname:""}
+          }
+          res.render('index.ejs',renderdata)
+          res.end()
+        }
+      })
+    })
+  }
+})
+
+
 router.post("/buy",function(req,res){
   if(req.cookies.usertoken == undefined){
     res.redirect('/login')
@@ -224,6 +461,7 @@ router.post("/editinfo",function(req,res){
           }}, function(err, edit_err){
             res.redirect('/profile')
           })
+
         }
       })
     })
@@ -240,7 +478,23 @@ router.get("/profile",function(req,res){
       var dbo = db.db("shayegh")
       dbo.collection("Users").findOne({token:req.cookies.usertoken},async function(err,user){
         if(user==undefined){
-          //adminpanel
+          dbo.collection("Admins").findOne({token:req.cookies.admintoken},async function(err,admin){
+            if(admin==undefined){
+              res.redirect('/404')
+            }
+            else{
+              products = await dbo.collection("Products").find({}).toArray()
+              orders = await dbo.collection("Orders").find({}).toArray()
+              categories = await dbo.collection("Categories").find({}).toArray()
+              renderdata = {
+                main_path:'./login_signup_profile/adminpanel.ejs',
+                main_data:{products:products,orders:orders,categories:categories},
+                user:{firstname:"admin",lastname:""}
+              }
+              res.render('index.ejs',renderdata)
+              res.end()
+            }
+          })
         }
         else{
           orders =await dbo.collection("Orders").find({customer_id:user._id}).toArray()
@@ -459,8 +713,8 @@ router.get("/404",function(req,res){
           dbo.collection("Admins").findOne({token:req.cookies.admintoken},function(err,admin){
             renderdata = {
               main_path:'./404.ejs',
-              main_data:{firstname:"admin",lastname:""},
-              user:user
+              main_data:{},
+              user:{firstname:"admin",lastname:""}
             }
             res.render('index.ejs',renderdata)
             res.end()

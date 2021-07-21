@@ -5,6 +5,10 @@ var desired_product = {
     "categories": []
 }
 
+//load the page at first without any filter
+fetch_product()
+
+//fetch desired products based on the filters and show the result
 function fetch_product(){
     fetch('/test', {
         method: "POST",
@@ -12,9 +16,42 @@ function fetch_product(){
         headers: {"Content-type": "application/json; charset=UTF-8"}
     })
     .then(response => response.json()) 
-    .then(data => console.log(data));
+    .then(data => {
+        //create elements
+        box = document.createElement("div")
+        box.className = "product_box"
+        product_img = document.createElement("img")
+        product_img.className = "product_img"
+        product_name = document.createElement("h3")
+        product_cat = document.createElement("h4")
+        sep_line = document.createElement("hr")
+        sep_line.className = "separate_line"
+        bot_info = document.createElement("div")
+        bot_info.className = "bottom_part"
+        product_price = document.createElement("p")
+        product_price.className = "product_price"
+        price_unit = document.createElement("P")
+        price_unit.className = "unit"
+        shop_btn = document.createElement("button")
+        shop_btn.className = "shop_btn"
+        //add children to bottom part
+        bot_info.appendChild(product_price)
+        bot_info.appendChild(price_unit)
+        bot_info.appendChild(shop_btn)
+        //create final card
+        box.appendChild(product_img)
+        box.appendChild(product_name)
+        box.appendChild(product_cat)
+        box.appendChild(sep_line)
+        box.appendChild(bot_info)
+        //initialize the elements
+        
+    }
+    );
 }
 
+
+// <%- include('product_box.ejs',{data:{productname:'موس گیمینگ ریزر',productcat:'دسته بندی یک', productprice:'10.000', source:'img/sample_product.jpg',action:'خرید محصول'}}) -%>
 //this function will be called when the user changes the page
 function change_page(element_id) {
     //define the page the user want to visit
@@ -87,7 +124,7 @@ function category(){
     let number_of_cat = document.getElementsByClassName("cat_checkbox").length
     cat = document.getElementsByClassName("checkbox_round")
     console.log(cat)
-    for(i = 0; i < number_of_cat; i++){
+    for(let i = 0; i < number_of_cat; i++){
         if (cat[i].checked == true){
             checked_cat.push(cat[i].value)
         }

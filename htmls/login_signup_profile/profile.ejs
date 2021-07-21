@@ -12,8 +12,8 @@
         <button id="btn-etab" class="tablink tablinkright" onclick="changetab('profile')">پروفایل</button>
     </div>
 
-    <%- include('receipts.ejs') -%>
-    <%- include('editprofile.ejs') -%>
+    <%- include('receipts.ejs',{orders:data.orders}) -%>
+    <%- include('editprofile.ejs',{user:data.user}) -%>
     
     
 </div>

@@ -84,9 +84,10 @@ router.get("/profile",function(req,res){
 
         }
         else{
+          orders =await dbo.collection("Orders").find({customer_id:user._id.toString()}).toArray()
           renderdata = {
             main_path:'./login_signup_profile/profile.ejs',
-            main_data:{user:user},
+            main_data:{user:user,orders:orders},
             user:user
           }
           res.render('index.ejs',renderdata)

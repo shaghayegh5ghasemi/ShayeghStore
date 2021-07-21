@@ -6,29 +6,13 @@
           <th>قیمت پرداخت شده</th>
           <th>آدرس ارسال شده</th>
         </tr>
+        <% for(let i =0 ; i < orders.length ;i++) { %>
         <tr>
-            <td style="font-family: Arial, Helvetica, sans-serif;">SHOP123456</td>
-            <td>موس گیمینگ ریزر</td>
-            <td>10000 تومان</td>
-            <td>ایران-تهران-قلب حسن</td>
+            <td style="font-family: Arial, Helvetica, sans-serif;"><%= orders[i].sell_id %></td>
+            <td><%= orders[i].product_name %></td>
+            <td><%= orders[i].price %> تومان </td>
+            <td><%= orders[i].recv_address %></td>
         </tr>
-        <tr>
-            <td>SHOP123456</td>
-            <td>موس گیمینگ ریزر</td>
-            <td>10000 تومان</td>
-            <td>ایران-تهران-قلب حسن</td>
-        </tr>
-        <tr>
-            <td>SHOP123456</td>
-            <td>موس گیمینگ ریزر</td>
-            <td>10000 تومان</td>
-            <td>ایران-تهران-قلب حسن</td>
-        </tr>
-        <tr>
-            <td>SHOP123456</td>
-            <td>موس گیمینگ ریزر</td>
-            <td>10000 تومان</td>
-            <td>ایران-تهران-قلب حسن</td>
-        </tr>
+        <% } %>
       </table>
 </div>

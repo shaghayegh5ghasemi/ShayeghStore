@@ -40,6 +40,7 @@ function fetch_product(){
             price_unit.className = "unit"
             price_unit.innerHTML = "تومان"
             shop_btn = document.createElement("a")
+            shop_btn.href = "/buy?id="+data.products[i]._id
             shop_btn.className = "shop_btn"
             shop_btn.innerHTML = "خرید محصول"
             //add children to bottom part

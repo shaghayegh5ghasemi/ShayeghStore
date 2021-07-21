@@ -1,0 +1,11 @@
+<div id="content">
+    <p class="title child">
+        تعداد محصول
+    </p>
+    <form action="/buy?id=<%= data.id %>" method="POST">
+    <div class="inputs-login child">
+        <%- include('login_signup_profile/input.ejs',{data:{name:'تعداد',placeholder:' تعداد مورد نظر خود را وارد کنید'},additional:"",type:"number",name:"count"}) -%>
+    </div>
+    <button type="submit" class="submitbutton child">خرید</button>
+    </form>
+</div>

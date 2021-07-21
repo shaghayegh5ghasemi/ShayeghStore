@@ -216,8 +216,14 @@ router.post("/editinfo",function(req,res){
           res.redirect('/404')
         }
         else{
-          //TODO
-          //change user info
+          dbo.collection("users").updateOne({token:req.cookies.usertoken},{$set:{
+            firstname:req.body.first_name,
+            pass:md5(req.body.password),
+            lastname:req.body.last_name,
+            address:req.body.address
+          }}, function(err, edit_err){
+            res.redirect('/profile')
+          })
         }
       })
     })

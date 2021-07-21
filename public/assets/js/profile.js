@@ -1,3 +1,5 @@
+const e = require("express")
+
 function changetab(ds){
     if(ds=='receipts'){
         document.getElementById('title-rtab').style.display = 'block'
@@ -18,69 +20,63 @@ function changetab(ds){
 }
 
 
-//validation: required input
-function validateForm(){
-    var empty = 0
-    var inputs = document.getElementsByClassName("input_data")
-    for(let i = 0; i<inputs.length;i++){
-        if(inputs[i].value.length == 0){
-            inputs[i].style.borderColor = "red";
-            empty += 1
-        }
-        else{
-            inputs[i].style.borderColor = "green" 
-        }
-    }
-    if(empty != 0){
-        return false
-    }
-    return true
-}
 //validation: min length and characters of password, max length of texts, remove whitespaces
 function alphanumeric(inputtxt){ 
-    var letters = /^[0-9a-zA-Z]+$/
+    var letters = /^(?=.*[a-zA-Z])(?=.*[0-9])/
     if(inputtxt.value.match(letters)){
         return true
     }
     return false
 }
 
-function validation(input){
-    inputs = document.getElementsByClassName("input_data")
-    element = document.getElementsByClassName("input_data")[0]
-    for(let i = 0; i<inputs.length;i++){
-        if(inputs.name == input){
-            element = inputs[i]
-            break
-        }
-    }
-    if(input == "password"){
-        if(value.length < 8 || alphanumeric(element.value) == false){
+//validation
+function validateForm(name){
+    element = document.getElementsByName(name)[0]
+    console.log(element)
+    element.style.border = "solid"
+    element.style.borderWidsth = "15px"
+    //address
+    if(name == "address"){
+        if (element.value.length > 1000 || element.value.length == 0){
             element.style.borderColor = "red"
         }
-        else {
-            element.style.borderColor = "green"
+        else{
+            element.style.borderColor = "#74cf74"   
         }
     }
-    else if(input == "first_name" || input == "last_name" || input == "email"){
-        if(element.value.length >= 255){
+    //email
+    if(name == "email"){
+        if(!element.value.includes('@') || element.value.length == 0 || element.value.length > 250){
             element.style.borderColor = "red"
         }
-        else {
-            element.style.borderColor = "green"
+        else{
+            element.style.borderColor = "#74cf74"
+            temp = element.value
+            element.value = temp.trim()
         }
-        let resultString = element.value
-        element.value = resultString.trim()        
     }
-    else if(input == "address"){
-        if(element.value.length >= 1000){
+    //password
+    if(name == "password"){
+        if(element.value.length == 0 || element.value.length < 8 || element.value.length > 250 || !alphanumeric(element.value)){
             element.style.borderColor = "red"
         }
-        else {
-            element.style.borderColor = "green"  
+        else{
+            element.style.borderColor = "#74cf74" 
+        }
+    }
+    //first name and last name
+    if(name == "first_name" || name == "last_name"){
+        if(element.value.length == 0 || element.value.length > 250){
+            element.style.borderColor = "red"
+        }
+        else{
+            element.style.borderColor = "#74cf74"
+            temp = element.value
+            element.value = temp.trim()
         }
     }
 }
+
 function changetab_a(ds){
     if(ds=='receipts'){
         document.getElementById('div-rtab').style.display = 'block'

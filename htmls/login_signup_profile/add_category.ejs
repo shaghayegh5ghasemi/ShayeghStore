@@ -2,8 +2,10 @@
     <p class="title child">
         اضافه کردن دسته بندی جدید
     </p>
+    <form action="/addcategory" method="POST">
     <div class="inputs-login child">
-        <%- include('input.ejs',{data:{name:'دسته بندی جدید',placeholder:'دسته بندی مورد نظر خود را وارد کنید'},additional:""}) -%>
+        <%- include('input.ejs',{data:{name:'دسته بندی جدید',placeholder:'دسته بندی مورد نظر خود را وارد کنید'},additional:"",type:"text",name:"name"}) -%>
     </div>
-    <a href="test" class="submitbutton child">اضافه کردن</a>
+    <button type="submit" class="submitbutton child">اضافه کردن</button>
+    </form>
 </div>

@@ -10,7 +10,10 @@
     <a id="mid-ctab" style="display: none;" href="/addcategory" class="addbtn">ایجاد دسته بندی جدید +</a>
     <a id="mid-ptab" href="/addproduct" class="addbtn">ایجاد  محصول جدید +</a>
     <div style="display: none;" id="mid-rtab">
-        <%- include('input.ejs',{data:{name:'جستجوی کد پیگیری',placeholder:'کد پیگری را برای جستجو وارد کنید'},additional:"",type:"text",name:"search"}) -%>
+        <div class="input">
+            <label class="input-title">جستجوی کدپیگیری</label>
+            <input id="searchinput" oninput="fastsearch()" type="text" class="input-space" placeholder="جستجوی سریع" type="text">
+        </div>
     </div>
     
     <%- include('receipts-admin.ejs',{orders:data.orders}) -%>
@@ -24,3 +27,17 @@
         <% } %>
     </div>
 </div>
+
+<script>
+    function fastsearch(){
+        value=document.getElementById("searchinput").value;
+        document.getElementsByName("objects").forEach(function(doc){
+            if(!doc.dataset.name.includes(value)){
+                doc.style.display="none"
+            }
+            else{
+                doc.style.display=""
+            }
+        })
+    }
+  </script>

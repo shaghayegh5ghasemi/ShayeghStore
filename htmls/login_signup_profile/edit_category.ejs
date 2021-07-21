@@ -1,0 +1,11 @@
+<div id="content">
+    <p class="title child">
+        ویرایش دسته بندی 
+    </p>
+    <form action="/editcategory?id=<%= data.id %>" method="POST">
+    <div class="inputs-login child">
+        <%- include('input.ejs',{data:{name:'نام جدید',placeholder:' نام مورد نظر خود را وارد کنید'},additional:"",type:"text",name:"name"}) -%>
+    </div>
+    <button type="submit" class="submitbutton child">ویرایش کردن</button>
+    </form>
+</div>

@@ -8,7 +8,7 @@
           <th>آدرس ارسال شده</th>
         </tr>
         <% for(let i =0 ; i < orders.length ;i++) { %>
-            <tr>
+            <tr name="objects" data-name="<%= orders[i].sell_id %>">
                 <td style="font-family: Arial, Helvetica, sans-serif;"><%= orders[i].sell_id %></td>
                 <td><%= orders[i].product_name %></td>
                 <td><%= orders[i].price %> تومان </td>

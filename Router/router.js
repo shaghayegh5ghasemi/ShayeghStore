@@ -565,11 +565,24 @@ router.get("/signup",function(req,res){
 router.post("/signup",function(req,res){
   MongoClient.connect(dburl,function(err,db){
     var dbo = db.db("shayegh")
-    newuser = new User(req.body.email,md5(req.body.password),req.body.first_name,req.body.last_name,req.body.address)
-    res.cookie('usertoken',newuser.token)
-    dbo.collection("Users").insertOne(newuser,function(err,qwe){
-      db.close()
-      res.redirect('/')
+    dbo.collection("Users").findOne({username:req.body.email},function(err,user){
+      if(user==undefined){
+        newuser = new User(req.body.email,md5(req.body.password),req.body.first_name,req.body.last_name,req.body.address)
+        res.cookie('usertoken',newuser.token)
+        dbo.collection("Users").insertOne(newuser,function(err,qwe){
+          db.close()
+          res.redirect('/')
+        })
+      }
+      else{
+        renderdata = {
+          main_path:'./login_signup_profile/signup.ejs',
+          main_data:{flag:1},
+          user:""
+        }
+        res.render('index.ejs',renderdata)
+        res.end()
+      }
     })
   })
 })

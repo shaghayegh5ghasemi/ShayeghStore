@@ -10,6 +10,9 @@
         <%- include('input.ejs',{data:{name:'ایمیل',placeholder:'ایمیل عبور خود را وارد کنید'},additional:"",type:"email",name:"email"}) -%>
         <%- include('textarea.ejs',{data:{name:'آدرس',placeholder:'آدرس خود را وارد کنید'},name:"address"}) -%>
     </div>
+    <% if(data.flag==1) {  %>
+        <p style="color: red;">کاربری با این نام کاربری در سیستم موجود می باشد.</p>
+    <% } %>
     <button type="submit" class="submitbutton child">ثبت نام</button>
     </form>
 </div>
